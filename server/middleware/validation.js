@@ -3,7 +3,7 @@ const { body, validationResult } = require('express-validator');
 const validateTask = [
   body('title').notEmpty(),
   body('status').isIn(['todo', 'in progress', 'done']),
-  body('dueDate').isDate().isAfter(new Date().toString()),
+  body('dueDate').notEmpty(),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

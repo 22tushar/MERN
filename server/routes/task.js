@@ -30,7 +30,8 @@ router.get('/:taskId', async (req, res) => {
 
 
 // POST /tasks
-router.post('/newtask', validateTask, async (req, res) => {
+router.post('/newtask', async (req, res) => {
+  
     const task = new Task({
       title: req.body.title,
       description: req.body.description,
@@ -93,12 +94,6 @@ router.delete('/:taskId', async (req, res) => {
   }
 });
 
-
-
-
-
-
-  
 
 
 module.exports = router;
