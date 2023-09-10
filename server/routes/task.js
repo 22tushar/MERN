@@ -63,10 +63,8 @@ router.put('/:taskId', validateTask, async (req, res) => {
           } // Update: Set the new values
       );
 
-      if (updatedTask.nModified === 1) {
-          res.json({ message: 'Task updated successfully' });
-      } else {
-          res.status(404).json({ message: 'Task not found' });
+      if (updatedTask.nModified !== 1) {
+          res.status(200).json({ message: 'Task updated successfully' });
       }
   } catch (error) {
       res.status(400).json({ message: error.message });
