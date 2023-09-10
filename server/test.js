@@ -9,7 +9,7 @@ describe('Task Manager API', () => {
   let taskId;
 
   it('should create a new task', (done) => {
-    chai.request('http://localhost:5000')
+    chai.request(process.env.localhost)
       .post('/tasks/newtask')
       .send({
         title: 'Test Task',
@@ -26,7 +26,7 @@ describe('Task Manager API', () => {
   });
 
   it('should get all tasks', (done) => {
-    chai.request('http://localhost:5000')
+    chai.request(process.env.localhost)
       .get('/tasks/getalltask')
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -36,7 +36,7 @@ describe('Task Manager API', () => {
   });
 
   it('should get a specific task', (done) => {
-    chai.request('http://localhost:5000')
+    chai.request(process.env.localhost)
       .get(`/tasks/${taskId}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -46,7 +46,7 @@ describe('Task Manager API', () => {
   });
 
   it('should update a task', (done) => {
-    chai.request('http://localhost:5000')
+    chai.request(process.env.localhost)
       .put(`/tasks/${taskId}`)
       .send({
         title: 'Updated Task',
@@ -62,7 +62,7 @@ describe('Task Manager API', () => {
   });
 
   it('should delete a task', (done) => {
-    chai.request('http://localhost:5000')
+    chai.request(process.env.localhost)
       .delete(`/tasks/${taskId}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
